@@ -4,11 +4,9 @@
   "description": "As part of HackReactor's software engineering curicula: Front End Capstone",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/JAMS-Front-End-Capstone/module1.git"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server-dev": "nodemon /client/dist",
+    "build-dev": "webpack -d --watch"
   },
   "author": "Jon Vanasse",
   "license": "ISC",
@@ -18,8 +16,9 @@
   "homepage": "https://github.com/JAMS-Front-End-Capstone/module1#readme",
   "dependencies": {
     "axios": "^0.21.1",
+    "babel-loader": "^8.2.2",
+    "body-parser": "^1.19.0",
     "express": "^4.17.1",
-    "mongo": "^0.1.0",
     "mongoose": "^5.11.12",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.7",
