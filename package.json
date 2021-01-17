@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "server-dev": "nodemon server/index.js",
-    "build-dev": "webpack --watch"
+    "build-dev": "webpack --watch",
+    "db:setup": "node database/index.js"
   },
   "author": "Jon Vanasse",
   "license": "ISC",
@@ -16,7 +17,9 @@
   "homepage": "https://github.com/JAMS-Front-End-Capstone/module1#readme",
   "dependencies": {
     "axios": "^0.21.1",
+    "bluebird": "^3.7.2",
     "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "mongoose": "^5.11.12",
     "nodemon": "^2.0.7",
@@ -24,12 +27,13 @@
     "react-dom": "^16.14.0"
   },
   "devDependencies": {
-    "babel-loader": "^8.2.2",
     "@babel/core": "^7.12.10",
     "@babel/preset-env": "^7.12.11",
     "@babel/preset-react": "^7.12.10",
+    "babel-loader": "^8.2.2",
     "circleci": "^0.3.3",
     "enzyme": "^3.11.0",
+    "faker": "^5.1.0",
     "jest": "^26.6.3",
     "morgan": "^1.10.0",
     "webpack": "^5.14.0",
