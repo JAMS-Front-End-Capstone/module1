@@ -6,11 +6,11 @@ const cors = require('cors');
 
 const PORT = 3000 || process.env.PORT;
 const STATIC_DIR = path.resolve(__dirname, '..', 'client', 'dist');
-const attraction = require(path.resolve(__dirname, '..', 'database', 'index.js'))
+const db = require(path.resolve(__dirname, '..', 'database', 'index.js'));
 
 const app = express();
 
-app.use(cors());
+// app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(morgan('dev'));
@@ -22,9 +22,19 @@ app.use((req, res, next) => {
 })
 
 app.get('/', (req, res) => {
-  console.log(`${req.body} is the request body on the req for ${req.url}`);
-  res.status(200).send(JSON.stringify(attraction));
-})
+  res.send(200).catch(err => console.log(err));
+  console.log(`${req.method} request resolved for ${req.url}`);
+});
+
+app.get('/api/attraction', (req, res) => {
+  console.log(`${req.method} request received for ${req.url}`);
+  db.findModel().then((attraction) => {
+    res.status(200).send(attraction)
+  }).catch((err) => {
+    console.log(err);
+    res.send(500);
+  });
+});
 
 app.listen(PORT, () => {
   console.log(`Server is listening on port: ${PORT}`)

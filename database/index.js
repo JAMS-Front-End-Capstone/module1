@@ -2,6 +2,7 @@
 
 const mongoose = require('mongoose');
 const faker = require('faker');
+const { reject } = require('bluebird');
 
 // DATABASE INITIALIZATION
 
@@ -24,7 +25,9 @@ const attractionSchema = new mongoose.Schema({
   _id: mongoose.Schema.Types.ObjectId,
   attractionName: String,
   reviewCount: Number,
-  attractionRank: Array,
+  averageRating: Number,
+  rank: Number,
+  ranked: Number,
   category: String,
   tourCount: Number,
   greaterArea: String,
@@ -49,7 +52,8 @@ const seedDatabase = () => {
   const attraction = {
     attractionName: 'Punaauia Beach',
     reviewCount: faker.random.number({max: 70, min: 13}),
-    attractionRank: [faker.random.number(3), faker.random.number({max: 11, min: 4})],
+    rank: faker.random.number({max: 3, min: 1}),
+    ranked: faker.random.number({max: 11, min: 4}),
     category: 'Beaches',
     tourCount: faker.random.number(15),
     greaterArea: 'Tahiti',
@@ -64,15 +68,17 @@ const seedDatabase = () => {
     // generating the photo array for this review
     let photos = []
     let options = ['nature', 'animals', 'city', 'food']
-    for (let j = 0; j < faker.random.number(7); j++) {
-      let option = options[faker.random.number({max: 3, min: 0})];
-      photos.push(faker.image.imageUrl(640, 480, option, true, true))
+    if (faker.random.number(3) === 1 && faker.random.number(2) === 1) {
+      for (let j = 0; j < faker.random.number(7); j++) {
+        let option = options[faker.random.number({max: 3, min: 0})];
+        photos.push(faker.image.imageUrl(640, 480, option, true, true))
+      }
     }
     // create the review with the nested docs
     let review = {
       createdAt: faker.date.past(faker.random.number({max:9, min: 0})),
       rating: faker.random.number({max: 5, min: 1, }),
-      tagline: faker.lorem.sentence(),
+      tagline: faker.lorem.words(),
       body: body.join('\n'),
       reviewer: {
         username: faker.internet.userName(),
@@ -85,11 +91,31 @@ const seedDatabase = () => {
     attraction.reviews.push(review)
   }
 
-  Attraction.findOneAndUpdate({_id: attraction._id}, attraction, {j: true, new: true, upsert: true}).catch(err => console.log(err));
+  // get a real average rating score
+  // rounded to the nearest half point
+  let totalReviews = attraction.reviews.length;
+  let sumOfRatings = 0;
+  for (let i = 0; i < totalReviews; i++) {
+    sumOfRatings += attraction.reviews[i].rating;
+  }
+  let averageRating = Number.parseFloat(sumOfRatings/totalReviews).toPrecision(3);
+  averageRating % 1 >= 0.75 || averageRating % 1 < 0.25 ? averageRating = Math.round(averageRating) : averageRating = Number.parseInt(averageRating.toString()[0]) + .5
 
-  return attraction;
+  attraction.averageRating = averageRating;
+
+  Attraction.findOneAndUpdate({_id: attraction._id}, attraction, {j: true, new: true, upsert: true}).catch(err => console.log(err));
 }
 
-const attraction = seedDatabase();
+seedDatabase();
 
-module.exports.attraction = attraction;
+const findModel = () => {
+  return new Promise((resolve, reject) => {
+    let model = Attraction.find({})
+    model.then((data) => {
+      !data ? reject(new Error('Could not find model')) :
+      resolve(data);
+    });
+  });
+}
+
+module.exports.findModel = findModel;

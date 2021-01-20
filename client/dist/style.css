@@ -1,0 +1,76 @@
+@font-face {
+  font-family: 'Trip Sans';
+  font-style: normal;
+  font-weight: normal;
+  font-display: swap;
+  src: url('TripSans-Regular.woff2?v1.002') format('woff2'),
+    url('TripSans-Regular.woff?v1.002') format('woff');
+ }
+
+@font-face {
+  font-family: 'Trip Sans';
+  font-style: normal;
+  font-weight: bold;
+  font-display: swap;
+  src: url('TripSans-Medium.woff2?v1.002') format('woff2'),
+    url('TripSans-Medium.woff?v1.002') format('woff');
+}
+
+@font-face {
+  font-family: 'Trip Sans Mono';
+  font-style: normal;
+  font-weight: normal;
+  font-display: swap;
+  src: url('TripSansMono-Regular.woff2?v1.002') format('woff2'),
+    url('TripSansMono-Regular.woff?v1.002') format('woff');
+}
+
+html body {
+  font-family: 'Trip Sans', Arial, sans-serif !important;
+}
+
+#container {
+  color: rgb(44, 44, 44);
+  display: block;
+  font-family: "Trip Sans", Arial, sans-serif;
+  font-size: 16px;
+  margin: 0;
+  padding: 40px 0 40px 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+#AOleft {
+  background-color: rgb(255, 255, 255);
+  border-radius: 5px;
+  color: rgb(44, 44, 44);
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  flex-shrink: 1.25;
+  max-width: 450px;
+  padding: 5px;
+}
+
+#AOright {
+  align-items: center;
+  display: flex;
+  flex-grow: 1.5;
+  flex-shrink: 1;
+}
+
+.left {
+  align-items: center;
+  background-color: rgb(255, 255, 255);
+  color: rgb(44, 44, 44);
+  display: flex;
+  justify-content: center;
+  padding: 0 20px 20px 20px;
+}
+
+.heart-clicked {
+  display: none;
+}
+
+.heart-unclicked {
+  display: flex;
+}
