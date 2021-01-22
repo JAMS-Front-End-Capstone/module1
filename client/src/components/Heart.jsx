@@ -22,11 +22,6 @@ class Heart extends React.Component {
           <div id="left1-bottom-right-inner2">
             <div>
               <div id="left1-bottom-right-inner3">
-                <span>
-                  <span>
-
-                  </span>
-                </span>
                 <span id="heart" className={this.props.hearted ? "fill-heart" : "empty-heart"} onClick={this.handleClick}>
                   <svg viewBox="0 0 24 24" width="1em" height="1em"><path stroke="rgb(44,44,44)" strokeWidth="2" d="M12.001 20.729s-6.741-5.85-8.485-8.003c-2.055-2.541-2.018-5.837.089-7.836a5.928 5.928 0 014.104-1.618c1.548 0 3.005.575 4.104 1.618l.174.165.162-.155a5.93 5.93 0 014.104-1.618c1.548 0 3.005.574 4.104 1.618 2.158 2.049 2.192 5.273.084 7.841-1.755 2.139-8.44 7.988-8.44 7.988z"></path></svg>
                 </span>
