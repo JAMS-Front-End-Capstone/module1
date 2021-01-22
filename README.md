@@ -1,2 +1,2 @@
-# module1
+# module1 - Jon Vanasse
 Attraction Overview with Photo modal
