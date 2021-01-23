@@ -70,7 +70,7 @@ const seedDatabase = () => {
     let review = {
       createdAt: faker.date.past(faker.random.number({max:9, min: 0})),
       rating: faker.random.number({max: 5, min: 1}),
-      tagline: faker.lorem.words(),
+      tagline: faker.lorem.sentence(),
       body: body.join('\n'),
       reviewer: {
         username: faker.internet.userName(),
