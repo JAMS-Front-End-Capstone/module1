@@ -70,7 +70,7 @@ class AttractionOverview extends React.Component {
                                 <li className={"carousel " + (this.state.currentPhoto === index ? "active" : "inactive")} key={index} onClick={this.handleClick}>
                                   <div className="carousel-photo">
                                     <img className="reviewPhoto" src={photo.imageURL}/>
-                                    <div className=""></div>
+                                    <div className="reviewPhoto"></div>
                                   </div>
                                 </li>
                               )
@@ -78,7 +78,7 @@ class AttractionOverview extends React.Component {
                         </ul>
                         <div id="photo-overlay-container">
                           <span id="full-view" >
-                            <svg id="central-gallery-launcher" viewBox="0 0 24 24" width="1em" height="1em">
+                            <svg id="central-gallery-launcher svg" viewBox="0 0 24 24" width="1em" height="1em">
                               <path d="M21.5 2h-4.7c-.4 0-.7.5-.4.9L18 4.5l-5 5 1.4 1.4 5-5 1.7 1.7c.3.3.9.1.9-.4V2.5c0-.3-.3-.5-.5-.5zM2.5 22h4.7c.4 0 .7-.5.4-.9l-1.7-1.7 5-5L9.5 13l-5 5-1.7-1.7c-.3-.2-.8 0-.8.5v4.7c0 .3.2.5.5.5z">
                               </path>
                             </svg>
@@ -86,8 +86,32 @@ class AttractionOverview extends React.Component {
                           </span>
                         </div>
                         <div id="arrow-container"></div>
-                        <div id="navigate-left"></div>
-                        <div id="navigate-right"></div>
+                        <div id="navigate-left">&#62;</div>
+                        <div id="navigate-right">&#62;</div>
+                        <div id="nav-dots-container">
+                          <div id="nav-dots-inner-wrapper">
+                            <div className="nav-dot first-dot"></div>
+                            <div className="nav-dot selected"></div>
+                            <div className="nav-dot next-dot"></div>
+                            <div className="nav-dot"></div>
+                            <div className="nav-dot"></div>
+                            <div className="nav-dot"></div>
+                            <div className="nav-dot last-dot"></div>
+                          </div>
+                        </div>
+                        <div id="all-photos-container">
+                          <div id="all-photos-inner-wrapper">
+                            <button id="all-photos-button">
+                              <svg viewBox="0 0 24 24" height="20px" width="20px" id="all-photos-svg">
+                                <path d="M20 20H4c-1.103 0-2-.897-2-2V8c0-1.103.897-2 2-2h3.086l2-2h5.828l2 2H20c1.103 0 2 .897 2 2v10c0 1.103-.897 2-2 2zM4 8v10h16.002L20 8h-3.914l-2-2H9.914l-2 2H4z"></path>
+                                <path d="M12 16.5c-2.206 0-4-1.794-4-4s1.794-4 4-4 4 1.794 4 4-1.794 4-4 4zm0-6c-1.103 0-2 .897-2 2s.897 2 2 2 2-.897 2-2-.897-2-2-2z"></path>
+                              </svg>
+                              <span id="all-photos-text-padding">
+                                <span id="all-photos-text">{`All Photos (${this.state.attraction.photos.length})`}</span>
+                              </span>
+                            </button>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>

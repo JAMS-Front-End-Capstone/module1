@@ -15,10 +15,6 @@ db.once('open', () => {
   console.log(`we're connected!`)
 });
 
-db.onLoad = () => {
-  console.log('Loaded')
-}
-
 // MODEL
 
 const attractionSchema = new mongoose.Schema({
