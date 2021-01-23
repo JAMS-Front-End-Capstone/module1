@@ -14,12 +14,15 @@ class AttractionOverview extends React.Component {
     this.componentDidMount = this.componentDidMount.bind(this);
     this.toggleHeart = this.toggleHeart.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.iteratePhoto = this.iteratePhoto.bind(this);
   }
 
   componentDidMount() {
     axios.get('/api/attraction').then((response) => {
       this.setState({
-        attraction: response.data[0]
+        attraction: response.data[0],
+        hearted: false,
+        currentPhoto: 0
       });
     }).catch(err => console.log(err));
   }
@@ -33,6 +36,13 @@ class AttractionOverview extends React.Component {
 
   handleClick() {
     console.log(this.state.attractions.photos);
+  }
+
+  iteratePhoto() {
+    this.setState((state) => {
+      return {currentPhoto: state.currentPhoto + 1}
+    })
+    console.log(`Current Index is ${this.state.currentPhoto}`)
   }
 
   render() {
@@ -75,7 +85,7 @@ class AttractionOverview extends React.Component {
                                   </div>
                                 </li>
                               )
-                          })}
+                            })}
                         </ul>
                         <div id="photo-overlay-container">
                           <span id="full-view" >
@@ -87,8 +97,8 @@ class AttractionOverview extends React.Component {
                           </span>
                         </div>
                         <div id="arrow-container"></div>
-                        <div id="navigate-left"><span>&#10094;</span></div>
-                        <div id="navigate-right"><span>&#10095;</span></div>
+                        <div id="navigate-left"><div>&#10094;</div></div>
+                        <div id="navigate-right"><div>&#10095;</div></div>
                         <div id="nav-dots-container">
                           <div id="nav-dots-inner-wrapper">
                             <div className="nav-dot first-dot"></div>

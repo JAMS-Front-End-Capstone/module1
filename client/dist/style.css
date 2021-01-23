@@ -788,11 +788,11 @@ li {
   text-align: left;
 }
 
-.active {
+.carousel.active {
   opacity: 1;
 }
 
-.inactive {
+.carousel.inactive {
   opacity: 0;
 }
 
@@ -1083,20 +1083,6 @@ button{
   opacity:1;
 }
 
-#arrow-container{
-  position:absolute;
-  top:0;
-  bottom:0;
-  left:0;
-  right:0;
-  background:hsla(0,0%,100%,0);
-  transition:background .2s linear;
-}
-
-#photo-overlay-container:hover+#arrow-container{
-  background:hsla(0,0%,100%,.1);
-}
-
 #photo-list{
   height:100%;
   position:relative;
@@ -1120,6 +1106,7 @@ button{
 #navigate-left{
   border-radius:0 3px 3px 0;
   left:0;
+  display: inline-block;
 }
 
 #navigate-right{
@@ -1128,20 +1115,19 @@ button{
 }
 
 #navigate-right,#navigate-left{
-  font-size: 24px;
   opacity: 0;
-  position:absolute;
+  position: absolute;
   z-index:1;
   cursor:pointer;
   width:60px;
-  height:90px;
-  top:50%;
-/*   margin-top:-30px; */
+  height:46px;
+  top:44.5%;
   background:rgba(0,0,0,.32);
+  vertical-align: middle;
   text-align: center;
   color: white;
   font-weight: 300;
-  transform: scale(1, .67)
+  padding-top: 14px;
 }
 
 #navigate-right:hover,#navigate-left:hover{
@@ -1152,8 +1138,9 @@ button{
   opacity: 1;
 }
 
-#navigate-right span, #navigate-left span{
-  vertical-align: center;
+#navigate-left div, #navigate-right div {
+  font-size: 25px;
+  transform: scale(1, 0.67);
 }
 
 @media (min-width:1024px){
@@ -1539,6 +1526,10 @@ a{
   height: auto;
   width: auto;
   text-align: right;
+}
+
+.ui_icon.share:before{
+  content:"\e09a";
 }
 
 .ui_bubble_rating {
