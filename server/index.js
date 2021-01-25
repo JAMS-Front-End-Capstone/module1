@@ -4,7 +4,7 @@ const morgan = require('morgan');
 const path = require('path');
 const cors = require('cors');
 
-const PORT = 3000 || process.env.PORT;
+const PORT = 3002 || process.env.PORT;
 const STATIC_DIR = path.resolve(__dirname, '..', 'client', 'dist');
 const db = require(path.resolve(__dirname, '..', 'database', 'index.js'));
 

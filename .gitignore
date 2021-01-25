@@ -1,4 +1,4 @@
-client/dist/bundle.js
+bundle.js
 client/src/components/NewComponentTemplate.jsx
 node_modules/
 config.js

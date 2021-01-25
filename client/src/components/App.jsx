@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import moment from 'moment';
 import Heart from './Heart.jsx';
+import NavDots from './NavDots.jsx';
 
 class AttractionOverview extends React.Component {
   constructor(props) {
@@ -13,13 +14,15 @@ class AttractionOverview extends React.Component {
     }
     this.componentDidMount = this.componentDidMount.bind(this);
     this.toggleHeart = this.toggleHeart.bind(this);
-    this.handleClick = this.handleClick.bind(this);
+    this.iteratePhoto = this.iteratePhoto.bind(this);
   }
 
   componentDidMount() {
     axios.get('/api/attraction').then((response) => {
       this.setState({
-        attraction: response.data[0]
+        attraction: response.data[0],
+        hearted: false,
+        currentPhoto: 0
       });
     }).catch(err => console.log(err));
   }
@@ -33,13 +36,40 @@ class AttractionOverview extends React.Component {
 
   handleClick() {
     console.log(this.state.attractions.photos);
+    // launch modal on clicked photo
+  }
+
+  iteratePhoto(direction) {
+    let index = this.state.currentPhoto;
+    let length = this.state.attraction.photos.length;
+    if (direction === -1 && index === 0) {
+      return
+    } else if (direction === 1 && index === length - 1) {
+      return
+    } else {
+      this.setState((state) => {
+        if (direction === -1) {
+          if (state.currentPhoto === 1) {
+            document.getElementById("navigate-left").style.display = "none";
+          } else if (state.currentPhoto === length - 1) {
+            document.getElementById("navigate-right").style.display = "inline-block";
+          }
+        } else if (index === length - 2) {
+          document.getElementById("navigate-right").style.display = "none";
+        } else if (direction && state.currentPhoto === 0) {
+          document.getElementById("navigate-left").style.display = "inline-block";
+        }
+        console.log(`clicked! ${state.currentPhoto} out of ${length}`);
+        return {currentPhoto: state.currentPhoto + direction};
+      })
+    }
   }
 
   render() {
     if (this.state.attraction.reviews) {
       return (
         <div className="module1">
-          <link rel="stylesheet" href="style.css"/>
+          <link rel="stylesheet" href="attraction-overview.css"/>
           <div id="container" className="ui_container">
             <div id="AOleft">
               <div id="left1">
@@ -70,15 +100,15 @@ class AttractionOverview extends React.Component {
                               return (
                                 <li className={"carousel " + (this.state.currentPhoto === index ? "active" : "inactive")} key={index} onClick={this.handleClick}>
                                   <div className="carousel-photo">
-                                    <img className="reviewPhoto" src={photo.imageURL}/>
-                                    <div className="reviewPhoto"></div>
+                                    <img className="photo" src={photo.imageURL}/>
+                                    <div className="photo"></div>
                                   </div>
                                 </li>
                               )
-                          })}
+                            })}
                         </ul>
                         <div id="photo-overlay-container">
-                          <span id="full-view" >
+                          <span id="full-view" /* onClick={this.launchModalOnImage} */>
                             <svg id="central-gallery-launcher svg" viewBox="0 0 24 24" width="1em" height="1em">
                               <path fill="white" d="M21.5 2h-4.7c-.4 0-.7.5-.4.9L18 4.5l-5 5 1.4 1.4 5-5 1.7 1.7c.3.3.9.1.9-.4V2.5c0-.3-.3-.5-.5-.5zM2.5 22h4.7c.4 0 .7-.5.4-.9l-1.7-1.7 5-5L9.5 13l-5 5-1.7-1.7c-.3-.2-.8 0-.8.5v4.7c0 .3.2.5.5.5z">
                               </path>
@@ -87,19 +117,9 @@ class AttractionOverview extends React.Component {
                           </span>
                         </div>
                         <div id="arrow-container"></div>
-                        <div id="navigate-left"><span>&#10094;</span></div>
-                        <div id="navigate-right"><span>&#10095;</span></div>
-                        <div id="nav-dots-container">
-                          <div id="nav-dots-inner-wrapper">
-                            <div className="nav-dot first-dot"></div>
-                            <div className="nav-dot selected"></div>
-                            <div className="nav-dot next-dot"></div>
-                            <div className="nav-dot"></div>
-                            <div className="nav-dot"></div>
-                            <div className="nav-dot"></div>
-                            <div className="nav-dot last-dot"></div>
-                          </div>
-                        </div>
+                        <div id="navigate-left" onClick={()=>{this.iteratePhoto(-1)}}><div>&#10094;</div></div>
+                        <div id="navigate-right" onClick={()=>{this.iteratePhoto(1)}}><div>&#10095;</div></div>
+                        <NavDots length={this.state.attraction.photos} currentPhoto={this.state.currentPhoto}/>
                         <div id="all-photos-container">
                           <div id="all-photos-inner-wrapper">
                             <button id="all-photos-button">
@@ -137,7 +157,9 @@ function OverviewHeader(props) {
       <div id="overview-subtitle">
         <span className={`ui_bubble_rating bubble_${props.attraction.averageRating}`}>
         </span>
-        <span id="review-count">{`${props.attraction.reviewCount} Reviews`}</span>
+        <div className="review-count-wrapper">
+          <span id="review-count">{`${props.attraction.reviewCount} Reviews`}</span>
+        </div>
       </div>
     </div>
   )
@@ -158,7 +180,7 @@ function RankAndCategory(props) {
                       </span>
                     </b>
                     {`  of ${props.attraction.ranked} `}
-                    <a href="about/blank" className="black-link">{`things to do in ${props.attraction.greaterArea}`}</a>
+                    <a href="about:blank" className="black-link">{`things to do in ${props.attraction.greaterArea}`}</a>
                 </span>
               </div>
             </div>
@@ -166,7 +188,7 @@ function RankAndCategory(props) {
           <li></li>
           <li id="category-container">
             <span>
-              <a href="about/blank" className="black-link">{props.attraction.category}</a>
+              <a href="about:blank" className="black-link">{props.attraction.category}</a>
             </span>
           </li>
         </ul>
@@ -216,10 +238,10 @@ const Review = (props) => {
       </div>
       <div className="review-right">
         <div className="body-and-tagline">
-          <a className="tagline">"{props.review.tagline}"</a>
+          <a className="tagline black-link" href={`#reviews?rid=${props.review.id}`}>"{props.review.tagline}"</a>
           <div>
             {props.review.body.substr(0, 100)}
-            <a href="#reviews" className="review-read-more">...Read more</a>
+            <a href={`#reviews?rid=${props.review.id}`} className="review-read-more">...Read more</a>
           </div>
           <div className="bubbles-and-date">
             <div className="bubbles">
@@ -262,27 +284,5 @@ const Tours = (props) => {
     </div>
   )
 }
-
-/* const PhotoList = (props) => {
-  return (
-    <ul id="photo-list">
-      {props.photos.map((photo, index) => {
-        <Photo photo={photo} key={index} onClick={props.onClick} className={index === props.currentPhoto ? "active" : "inactive"}/>
-      })}
-    </ul>
-  )
-} */
-
-/* const Photo = (props) => {
-  console.log(props);
-  return (
-    <li className={`carousel ${props.className}`} key={props.key} onClick={props.onClick}>
-      <div className="carousel-photo">
-        <img className="reviewPhoto" src={props.photo.imageURL}/>
-        <div className=""></div>
-      </div>
-    </li>
-  )
-} */
 
 export default AttractionOverview
