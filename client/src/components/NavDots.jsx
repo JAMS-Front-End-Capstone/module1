@@ -5,7 +5,8 @@ class NavDots extends React.Component {
     super(props)
     this.state = {
       length: this.props.length,
-      currentPhoto: this.props.currentPhoto
+      currentPhoto: this.props.currentPhoto,
+      active: [0, 1, 2, 3, 4]
     }
 /*     this.animate = this.animate.bind(this); */
   }
@@ -30,8 +31,9 @@ class NavDots extends React.Component {
     return (
     <div id="nav-dots-container">
       <div id="nav-dots-inner-wrapper">
-        {["brawp" * this.state.length].map((row, index)=> {
-          return (<div id={`nd${index}`} key={index} className="nav-dot"></div>)
+        <div id="nd-1" transform="translateX(20px)" className="nav-dot" opacity="0"></div>
+        {this.state.length.map((row, index)=> {
+          return (<div id={`nd${index}`} key={index} transform={`translateX(${(index - this.state.currentPhoto)*20}px)`} className="nav-dot "></div>)
         })}
       </div>
     </div>

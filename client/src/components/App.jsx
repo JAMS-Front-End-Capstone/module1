@@ -15,8 +15,6 @@ class AttractionOverview extends React.Component {
     this.componentDidMount = this.componentDidMount.bind(this);
     this.toggleHeart = this.toggleHeart.bind(this);
     this.iteratePhoto = this.iteratePhoto.bind(this);
-/*     this.animateNavDots = this.animateNavDots.bind(this); */
-/*     this.launchModalOnImage = this.launchModalOnImage.bind(this); */
   }
 
   componentDidMount() {
@@ -67,21 +65,11 @@ class AttractionOverview extends React.Component {
     }
   }
 
-/*   animateNavDots() {
-
-  } */
-
-/*   launchModalOnImage() {
-    return (
-
-    )
-  } */
-
   render() {
     if (this.state.attraction.reviews) {
       return (
         <div className="module1">
-          <link rel="stylesheet" href="style.css"/>
+          <link rel="stylesheet" href="attraction-overview.css"/>
           <div id="container" className="ui_container">
             <div id="AOleft">
               <div id="left1">
@@ -131,7 +119,7 @@ class AttractionOverview extends React.Component {
                         <div id="arrow-container"></div>
                         <div id="navigate-left" onClick={()=>{this.iteratePhoto(-1)}}><div>&#10094;</div></div>
                         <div id="navigate-right" onClick={()=>{this.iteratePhoto(1)}}><div>&#10095;</div></div>
-                        <NavDots length={this.state.attraction.photos.length} currentPhoto={this.state.currentPhoto}/>
+                        <NavDots length={this.state.attraction.photos} currentPhoto={this.state.currentPhoto}/>
                         <div id="all-photos-container">
                           <div id="all-photos-inner-wrapper">
                             <button id="all-photos-button">
@@ -296,31 +284,5 @@ const Tours = (props) => {
     </div>
   )
 }
-
-// PROPS = length (photos) and index (currentPhoto)
-
-
-
-/* const PhotoList = (props) => {
-  return (
-    <ul id="photo-list">
-      {props.photos.map((photo, index) => {
-        <Photo photo={photo} key={index} onClick={props.onClick} className={index === props.currentPhoto ? "active" : "inactive"}/>
-      })}
-    </ul>
-  )
-} */
-
-/* const Photo = (props) => {
-  console.log(props);
-  return (
-    <li className={`carousel ${props.className}`} key={props.key} onClick={props.onClick}>
-      <div className="carousel-photo">
-        <img className="reviewPhoto" src={props.photo.imageURL}/>
-        <div className=""></div>
-      </div>
-    </li>
-  )
-} */
 
 export default AttractionOverview
