@@ -30,7 +30,7 @@ class Heart extends React.Component {
                 <span>
                   <div>
                     <span>
-                      <span class="ui_icon share">
+                      <span className="ui_icon share">
                       </span>
                     </span>
                   </div>

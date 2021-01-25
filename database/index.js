@@ -68,6 +68,7 @@ const seedDatabase = () => {
     }
     // create the review with the nested docs
     let review = {
+      id: faker.random.hexaDecimal(6),
       createdAt: faker.date.past(faker.random.number({max:9, min: 0})),
       rating: faker.random.number({max: 5, min: 1}),
       tagline: faker.lorem.sentence(),

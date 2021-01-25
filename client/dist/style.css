@@ -35,6 +35,7 @@
 html body {
   font-family: 'Trip Sans', Arial, sans-serif;
   background-color: #f2f2f2;
+  margin: 0;
 }
 
 div,li,ul {
@@ -132,8 +133,7 @@ li {
   margin-inline-start: 0px;
   margin: 0px;
   padding: 0px;
-  /*   line-height: 36; */
-  /* the above causes an issue of apparent re-appending to body, weirdly */
+  height: 36px;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -145,6 +145,13 @@ li {
 #overview-subtitle span {
   display: inline-block;
   position: relative;
+}
+
+.review-count-wrapper{
+  font-size: 14px;
+  display: inline-block;
+  color: #474747;
+  border-bottom: 1px dotted #e0e0e0;
 }
 
 #left1-bottom-left {
@@ -276,8 +283,8 @@ li {
 
 .review-list-container{
   margin-bottom:10px;
-  padding:20px
-  ;}
+  padding:0 20px 20px 20px;
+}
 
 .review-list-tagline{
   padding-bottom: 5px;
@@ -424,10 +431,10 @@ li {
 }
 
 .review-improve-container{
+  padding-top: 10px;
   font-size:14px;
   line-height:18px;
   color:#474747;
-  padding-top:10px;
 }
 
 .review-improve-spacer{
@@ -447,7 +454,7 @@ li {
   display:inline-block;
   border-bottom:1px dotted #e0e0e0;
   cursor:pointer;
-  display:inline;
+  width: 100%;
 }
 
 .review-improve-link:hover{
@@ -765,7 +772,7 @@ li {
   width: 100%;
 }
 
-.reviewPhoto {
+.photo {
   background-position: center center;
   background-size: cover;
   height: 100%;
@@ -788,11 +795,11 @@ li {
   text-align: left;
 }
 
-.carousel.active {
+.active {
   opacity: 1;
 }
 
-.carousel.inactive {
+.inactive {
   opacity: 0;
 }
 
@@ -924,14 +931,43 @@ button{
   display:inline-block;
   width:6px;
   height:6px;
-  background:hsla(0,0%,83.9%,.8);
+  background:rgba(238, 184, 184, 0.8);
 }
 
-.nav-dot.selected:after{
+.nd0:after {
+  transform: translateX(-60px) scale3d(0,0,1);
+  opacity: 0;
+}
+
+.nd1:after {
+  transform: translateX(-40px) scale3d(1,1,1);
+}
+
+.nd2:after {
+  transform: translateX(-20px);
+}
+
+.nd4:after {
+  transform: translateX(20px);
+}
+
+.nd5:after {
+  transform: translateX(40px) scale3d(1,1,1);
+}
+
+.nd6:after {
+  transform: translateX(60px) scale3d(0,0,1);
+  opacity: 0;
+}
+
+
+
+.selected:after{
   background: white;
-  transform: translate3d(attr(offset))
+  width: 7px;
+  height: 7px;
+  transform: scale(1.3, 1.3) inherit;
 }
-
 
 #all-photos-inner-wrapper{
   margin-bottom: 8px;
@@ -1106,12 +1142,13 @@ button{
 #navigate-left{
   border-radius:0 3px 3px 0;
   left:0;
-  display: inline-block;
+  display: none;
 }
 
 #navigate-right{
   border-radius:3px 0 0 3px;
   right:0;
+  display: inline-block;
 }
 
 #navigate-right,#navigate-left{

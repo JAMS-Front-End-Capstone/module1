@@ -4,7 +4,7 @@
   "description": "As part of HackReactor's software engineering curicula: Front End Capstone",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest spec/spec.js",
     "server-dev": "nodemon server/index.js",
     "build-dev": "webpack --watch",
     "db:setup": "node database/index.js"
@@ -31,6 +31,7 @@
     "@babel/core": "^7.12.10",
     "@babel/preset-env": "^7.12.11",
     "@babel/preset-react": "^7.12.10",
+    "babel-jest": "^26.6.3",
     "babel-loader": "^8.2.2",
     "circleci": "^0.3.3",
     "enzyme": "^3.11.0",
