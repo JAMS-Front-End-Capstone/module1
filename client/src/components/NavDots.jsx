@@ -8,7 +8,18 @@ class NavDots extends React.Component {
       currentPhoto: this.props.currentPhoto,
       active: [0, 1, 2, 3, 4]
     }
+    this.setClasses = this.setClasses.bind(this);
 /*     this.animate = this.animate.bind(this); */
+  }
+
+  setClasses() {
+    let goodRange = [];
+    let index = this.state.currentPhoto
+    if (this.state.length >= 5) {
+      if (index === 0) {
+        // finish implementation later
+      }
+    }
   }
 
   componentDidMount() {
@@ -25,6 +36,7 @@ class NavDots extends React.Component {
     let selected = document.getElementById(`nd${this.props.currentPhoto + 1}`)
     console.log(selected.className);
     selected.className = `nav-dot nd${this.props.currentPhoto + 1} selected`;
+    /* this.setClasses(); */
   }
 
   render() {

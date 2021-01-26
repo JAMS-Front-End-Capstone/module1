@@ -6,7 +6,7 @@ module.exports = {
   entry: `${SRC_DIR}/index.jsx`,
   output: {
     path: DIST_DIR,
-    filename: 'bundle.js'
+    filename: 'overview-bundle.js'
   },
   devtool: 'eval',
   module: {
