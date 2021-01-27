@@ -1,8 +1,12 @@
 import React from 'react';
 import axios from 'axios';
-import moment from 'moment';
+
 import Heart from './Heart.jsx';
 import NavDots from './NavDots.jsx';
+import OverviewHeader from './OverviewHeader.jsx';
+import RankAndCategory from './RankAndCategory.jsx';
+import ReviewList from './ReviewList.jsx';
+import Tours from './Tours.jsx';
 
 class AttractionOverview extends React.Component {
   constructor(props) {
@@ -68,9 +72,8 @@ class AttractionOverview extends React.Component {
   render() {
     if (this.state.attraction.reviews) {
       return (
-        <div className="module1">
-          <link rel="stylesheet" href="attraction-overview.css"/>
-          <div id="container" className="ui_container">
+        <div className="j-module1">
+          <div id="container" className="j-ui_container">
             <div id="AOleft">
               <div id="left1">
                 <div id="left1-fix">
@@ -81,10 +84,10 @@ class AttractionOverview extends React.Component {
                   </div>
                 </div>
               </div>
-              <div className="left2">
+              <div className="j-left2">
                 <ReviewList reviews={this.state.attraction.reviews.slice(0, 2)}/>
               </div>
-              <div className="left3">
+              <div className="j-left3">
                 <Tours tourCount={this.state.attraction.tourCount} tourCategories={this.state.attraction.tourCategories}/>
               </div>
             </div>
@@ -98,10 +101,10 @@ class AttractionOverview extends React.Component {
 {/*                           <PhotoCarousel photos={this.state.attraction.photos} currentPhoto={this.state.currentPhoto} iteratePhoto={this.state.iteratePhoto}/> */}
                           {this.state.attraction.photos.map((photo, index) => {
                               return (
-                                <li className={"carousel " + (this.state.currentPhoto === index ? "active" : "inactive")} key={index} onClick={this.handleClick}>
-                                  <div className="carousel-photo">
-                                    <img className="photo" src={photo.imageURL}/>
-                                    <div className="photo"></div>
+                                <li className={"j-carousel " + (this.state.currentPhoto === index ? "j-active" : "j-inactive")} key={index} onClick={this.handleClick}>
+                                  <div className="j-carousel-photo">
+                                    <img className="j-photo" src={photo.imageURL}/>
+                                    <div className="j-photo"></div>
                                   </div>
                                 </li>
                               )
@@ -119,7 +122,7 @@ class AttractionOverview extends React.Component {
                         <div id="arrow-container"></div>
                         <div id="navigate-left" onClick={()=>{this.iteratePhoto(-1)}}><div>&#10094;</div></div>
                         <div id="navigate-right" onClick={()=>{this.iteratePhoto(1)}}><div>&#10095;</div></div>
-                        <NavDots length={this.state.attraction.photos} currentPhoto={this.state.currentPhoto}/>
+                        {/* <NavDots length={this.state.attraction.photos} currentPhoto={this.state.currentPhoto}/> */}
                         <div id="all-photos-container">
                           <div id="all-photos-inner-wrapper">
                             <button id="all-photos-button">
@@ -150,22 +153,22 @@ class AttractionOverview extends React.Component {
   }
 }
 
-function OverviewHeader(props) {
+/* function OverviewHeader(props) {
   return (
     <div id="left1-top">
       <h1 id="overview-header">{props.attraction.attractionName}</h1>
       <div id="overview-subtitle">
         <span className={`ui_bubble_rating bubble_${props.attraction.averageRating}`}>
         </span>
-        <div className="review-count-wrapper">
+        <div className="j-review-count-wrapper">
           <span id="review-count">{`${props.attraction.reviewCount} Reviews`}</span>
         </div>
       </div>
     </div>
   )
-}
+} */
 
-function RankAndCategory(props) {
+/* function RankAndCategory(props) {
   return (
     <div id="left1-bottom-left">
       <div id="left1-bottom-left-inner">
@@ -180,7 +183,7 @@ function RankAndCategory(props) {
                       </span>
                     </b>
                     {`  of ${props.attraction.ranked} `}
-                    <a href="about:blank" className="black-link">{`things to do in ${props.attraction.greaterArea}`}</a>
+                    <a href="about:blank" className="j-black-link">{`things to do in ${props.attraction.greaterArea}`}</a>
                 </span>
               </div>
             </div>
@@ -188,36 +191,36 @@ function RankAndCategory(props) {
           <li></li>
           <li id="category-container">
             <span>
-              <a href="about:blank" className="black-link">{props.attraction.category}</a>
+              <a href="about:blank" className="j-black-link">{props.attraction.category}</a>
             </span>
           </li>
         </ul>
       </div>
     </div>
   )
-}
+} */
 
-const ReviewList = (props) => {
+/* const ReviewList = (props) => {
   return (
-    <div className="review-list-container">
+    <div className="j-review-list-container">
       <div>
         <div>
-          <div className="review-list-tagline">
+          <div className="j-review-list-tagline">
             <h2>What travelers are saying</h2>
           </div>
           <div>
-            <div className="review-section-preview">
+            <div className="j-review-section-preview">
               <Review review={props.reviews[0]}/>
               <Review review={props.reviews[1]}/>
             </div>
-            <a className="review-section-link black-link" href="#REVIEWS">See all reviews</a>
+            <a className="j-review-section-link black-link" href="#REVIEWS">See all reviews</a>
           </div>
         </div>
-        <div className="review-improve-container">
-          <div className="review-improve-spacer">
-            <span className="ui_icon pencil review-improve-pencil"></span>
+        <div className="j-review-improve-container">
+          <div className="j-review-improve-spacer">
+            <span className="j-ui_icon pencil review-improve-pencil"></span>
             <div>
-              <a className="review-improve-link black-link" href="#UPDATE">Improve This Listing</a>
+              <a className="j-review-improve-link black-link" href="#UPDATE">Improve This Listing</a>
             </div>
           </div>
         </div>
@@ -228,61 +231,61 @@ const ReviewList = (props) => {
 
 const Review = (props) => {
   return (
-    <div className="review">
-      <div className="review-left">
-        <span className="ui_avatar">
+    <div className="j-review">
+      <div className="j-review-left">
+        <span className="j-ui_avatar">
           <div>
-            <svg viewBox="0 0 24 24" width="42px" height="42px" className="review-avatar _2JndpOur"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zM7.88 18.85a4.271 4.271 0 018.24 0 8.001 8.001 0 01-8.24 0zm9.89-1.321a6.257 6.257 0 00-11.537 0 8 8 0 1111.537 0z"></path><path d="M12 6a3.5 3.5 0 100 7 3.5 3.5 0 000-7zm0 5a1.5 1.5 0 110-3 1.5 1.5 0 010 3z"></path></svg>
+            <svg viewBox="0 0 24 24" width="42px" height="42px" className="j-review-avatar _2JndpOur"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zM7.88 18.85a4.271 4.271 0 018.24 0 8.001 8.001 0 01-8.24 0zm9.89-1.321a6.257 6.257 0 00-11.537 0 8 8 0 1111.537 0z"></path><path d="M12 6a3.5 3.5 0 100 7 3.5 3.5 0 000-7zm0 5a1.5 1.5 0 110-3 1.5 1.5 0 010 3z"></path></svg>
           </div>
         </span>
       </div>
-      <div className="review-right">
-        <div className="body-and-tagline">
-          <a className="tagline black-link" href={`#reviews?rid=${props.review.id}`}>"{props.review.tagline}"</a>
+      <div className="j-review-right">
+        <div className="j-body-and-tagline">
+          <a className="j-tagline black-link" href={`#reviews?rid=${props.review.id}`}>"{props.review.tagline}"</a>
           <div>
             {props.review.body.substr(0, 100)}
-            <a href={`#reviews?rid=${props.review.id}`} className="review-read-more">...Read more</a>
+            <a href={`#reviews?rid=${props.review.id}`} className="j-review-read-more">...Read more</a>
           </div>
-          <div className="bubbles-and-date">
-            <div className="bubbles">
+          <div className="j-bubbles-and-date">
+            <div className="j-bubbles">
               <span className={`ui_bubble_rating bubble_${props.review.rating}0`}></span>
             </div>
-            <div className="date">Reviewed on {moment(props.review.createdAt).format("MMMM D, YYYY")}</div>
+            <div className="j-date">Reviewed on {moment(props.review.createdAt).format("MMMM D, YYYY")}</div>
           </div>
         </div>
       </div>
     </div>
   )
-}
+} */
 
-const Tours = (props) => {
+/* const Tours = (props) => {
   return (
-    <div className="tours-outer">
-      <div className="tours-inner">
-        <div className="tours-top">
-          <div className="tours-top-left">
-            <span className="ui_icon activities"></span>
+    <div className="j-tours-outer">
+      <div className="j-tours-inner">
+        <div className="j-tours-top">
+          <div className="j-tours-top-left">
+            <span className="j-ui_icon activities"></span>
           </div>
-          <div className="tours-top-right">
-            <div className="tours-top-right-top">
+          <div className="j-tours-top-right">
+            <div className="j-tours-top-right-top">
               <span>{`${props.tourCount} Tours & Experiences`}</span>
             </div>
-            <div className="tours-top-right-bottom">
+            <div className="j-tours-top-right-bottom">
               <span>{`${props.tourCategories} & more`}</span>
             </div>
           </div>
         </div>
-        <button className="ui_button primary fullwidth tours-bottom">
-          <div className="tours-bottom-inner">
-            <div className="tours-bottom-text">See available tour options</div>
-            <div className="tours-bottom-arrow">
-              <span className="ui_icon arrow-down"></span>
+        <button className="j-ui_button primary fullwidth tours-bottom">
+          <div className="j-tours-bottom-inner">
+            <div className="j-tours-bottom-text">See available tour options</div>
+            <div className="j-tours-bottom-arrow">
+              <span className="j-ui_icon arrow-down"></span>
             </div>
           </div>
         </button>
       </div>
     </div>
   )
-}
+} */
 
 export default AttractionOverview
