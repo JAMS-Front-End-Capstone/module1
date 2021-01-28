@@ -2,12 +2,12 @@ import React from 'react';
 
 const RankAndCategory = function (props) {
   return (
-    <div id="left1-bottom-left">
-      <div id="left1-bottom-left-inner">
+    <div  id="j-left1-bottom-left">
+      <div  id="j-left1-bottom-left-inner">
         <ul>
           <li>
-            <div id="rank-container">
-              <div id="rank-container-inner">
+            <div  id="j-rank-container">
+              <div  id="j-rank-container-inner">
                 <span>
                     <b>
                       <span>
@@ -21,7 +21,7 @@ const RankAndCategory = function (props) {
             </div>
           </li>
           <li></li>
-          <li id="category-container">
+          <li  id="j-category-container">
             <span>
               <a href="about:blank" className="j-black-link">{props.attraction.category}</a>
             </span>
