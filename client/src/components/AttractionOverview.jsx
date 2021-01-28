@@ -1,12 +1,12 @@
 import React from 'react';
 import axios from 'axios';
-
 import Heart from './Heart.jsx';
 import NavDots from './NavDots.jsx';
 import OverviewHeader from './OverviewHeader.jsx';
 import RankAndCategory from './RankAndCategory.jsx';
 import ReviewList from './ReviewList.jsx';
 import Tours from './Tours.jsx';
+import '../attraction-overview.css';
 
 class AttractionOverview extends React.Component {
   constructor(props) {

@@ -9,9 +9,10 @@ class NavDots extends React.Component {
       active: [0, 1, 2, 3, 4]
     }
     this.setClasses = this.setClasses.bind(this);
-/*     this.animate = this.animate.bind(this); */
   }
 
+  /* DEVELOPMENT PLAN: TODO
+  *   */
   setClasses() {
     let goodRange = [];
     let index = this.state.currentPhoto
@@ -36,7 +37,7 @@ class NavDots extends React.Component {
     let selected = document.getElementById(`j-nd${this.props.currentPhoto + 1}`)
     console.log(selected.className);
     selected.className = `j-nav-dot j-nd${this.props.currentPhoto + 1} selected`;
-    /* this.setClasses(); */
+
   }
 
   render() {
