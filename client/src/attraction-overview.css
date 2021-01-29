@@ -1,3 +1,5 @@
+
+
 .j-module1 {
   display: flex;
   position: relative;
@@ -180,6 +182,74 @@ li {
   border-bottom-width: 1px;
 }
 
+#j-left1-bottom-right {
+  box-sizing: border-box;
+  display: block;
+  flex-basis: auto;
+  flex-grow: 0;
+  flex-shrink: 0;
+  font-family: 'Trip Sans', Arial, sans-serif;
+  font-size: 16px;
+  margin: 0;
+  padding: 0 12px;
+  width: 72px;
+  order: 2;
+}
+
+#j-left1-bottom-right-inner1 {
+  height: 41px;
+  width: 48px;
+}
+
+#j-left1-bottom-right-inner2 {
+  display: flex;
+  flex-direction: row-reverse;
+  text-align: right;
+  align-items: flex-end;
+}
+
+#j-left1-bottom-right-inner3 {
+  height: 20;
+  width: 20;
+  align-items: center;
+  display: flex;
+  cursor: pointer;
+  position: relative;
+}
+
+#j-heart {
+  font-size: 20px;
+  height: 20px;
+  line-height: 20px;
+  position: relative;
+  text-align: right;
+  vertical-align: middle;
+  width: 20px;
+  z-index: 1;
+}
+
+.j-empty-heart {
+  fill: none;
+}
+
+.j-full-heart {
+  fill: rgb(44, 44, 44);
+}
+
+.j-ui_icon.share:before{
+  content:"\e09a";
+}
+
+.j-ui_icon.share {
+  color: rgb(44,44,44);
+  cursor: pointer;
+  display: inline;
+  font-family: "Trip Sans", Arial, sans-serif;
+  font-size: 20px;
+  height: auto;
+  width: auto;
+  text-align: right;
+}
 
 
 /* BEGIN REVIEWLIST AND REVIEW COMPONENTS */
@@ -379,6 +449,7 @@ li {
   -ms-flex-pack:center;
   justify-content:center;
   background-color:#fff;
+  padding: 0 0 20px;
 }
 
 .j-tours-outer>div{
@@ -545,6 +616,7 @@ li {
 /* BEGIN IMAGE CAROUSEL */
 
 #j-AOright {
+/*   background-color: rgb(224,224,224); */
   align-items: center;
   height: 638px;
   width: 772px;
