@@ -40,7 +40,7 @@ const seedDatabase = () => {
 
   const tourString = generateTours(tours);
   const attraction = {
-    _id: faker.random.hexaDecimal(24),
+    _id: 1,
     attractionName: 'Punaauia Beach',
     reviewCount: faker.random.number({max:20, min: 3}),
     rank: faker.random.number({max: 3, min: 1}),

@@ -1,14 +1,4 @@
 
-html body {
-  font-family: 'Trip Sans', Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  margin-top: 0px;
-  margin-right: 0px;
-  margin-bottom: 0px;
-  margin-left: 0px;
-}
-
-
 
 .j-module1 {
   display: flex;
@@ -246,6 +236,22 @@ li {
   fill: rgb(44, 44, 44);
 }
 
+.j-ui_icon.share:before{
+  content:"\e09a";
+}
+
+.j-ui_icon.share {
+  color: rgb(44,44,44);
+  cursor: pointer;
+  display: inline;
+  font-family: "Trip Sans", Arial, sans-serif;
+  font-size: 20px;
+  height: auto;
+  width: auto;
+  text-align: right;
+}
+
+
 /* BEGIN REVIEWLIST AND REVIEW COMPONENTS */
 
 .j-review-list-container{
@@ -349,10 +355,6 @@ li {
   cursor:pointer;
 }
 
-.j-reviews{
-
-}
-
 .j-bubbles-and-date{
   display:-webkit-flex;
   display:-ms-flexbox;
@@ -447,6 +449,7 @@ li {
   -ms-flex-pack:center;
   justify-content:center;
   background-color:#fff;
+  padding: 0 0 20px;
 }
 
 .j-tours-outer>div{
@@ -613,6 +616,7 @@ li {
 /* BEGIN IMAGE CAROUSEL */
 
 #j-AOright {
+/*   background-color: rgb(224,224,224); */
   align-items: center;
   height: 638px;
   width: 772px;
@@ -1502,21 +1506,6 @@ a{
 
 .j-ui_icon:before{
   text-decoration:none;
-}
-
-.j-ui_icon.share {
-  color: rgb(44,44,44);
-  cursor: pointer;
-  display: inline;
-  font-family: "Trip Sans", Arial, sans-serif;
-  font-size: 20px;
-  height: auto;
-  width: auto;
-  text-align: right;
-}
-
-.j-ui_icon.share:before{
-  content:"\e09a";
 }
 
 .j-ui_bubble_rating {
