@@ -9,7 +9,7 @@ import Tours from './Tours.jsx';
 import '../attraction-overview.css';
 
 const proxyUrl = document.getElementById('proxyUrl');
-const serverUrl = proxyUrl ? proxyUrl.attributes[2].nodeValue + '/api/attraction?attactionId=1' : '/api/attraction?attactionId=1';
+const apiOrProxyForApi = proxyUrl ? proxyUrl.attributes[2].nodeValue + '/api/attraction/?attactionId=1' : '/api/attraction/?attactionId=1';
 
 class AttractionOverview extends React.Component {
   constructor(props) {
@@ -26,7 +26,7 @@ class AttractionOverview extends React.Component {
   }
 
   componentDidMount() {
-    axios.get(serverUrl, ).then((response) => {
+    axios.get(apiOrProxyForApi, ).then((response) => {
       this.setState({
         attraction: response.data[0],
         hearted: false,

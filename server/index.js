@@ -36,10 +36,6 @@ app.get('/api/attraction/:attractionId', (req, res) => {
   });
 });
 
-app.get('/api/bundles', (req, res) => {
-  console.log(`${req.method} request received for ${req.url}`)
-})
-
 app.listen(PORT, () => {
   console.log(`Server is listening on port: ${PORT}`)
 })

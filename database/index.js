@@ -6,7 +6,7 @@ const { reject } = require('bluebird');
 
 // DATABASE INITIALIZATION
 
-mongoose.connect('mongodb://localhost/attractions', {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect('mongodb://attraction-overview-db/attraction', {useNewUrlParser: true, useUnifiedTopology: true});
 
 const db = mongoose.connection;
 
