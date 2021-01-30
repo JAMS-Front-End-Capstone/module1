@@ -1,0 +1,29 @@
+version: '3.4'
+
+networks:
+  attraction:
+    driver: bridge
+
+services:
+  attraction-overview-server:
+    ports:
+      - 3002:3002
+    build:
+      context: .
+      dockerfile: Dockerfile
+    networks:
+      - attraction
+    depends_on:
+      - attraction-overview-db
+    restart: always
+  attraction-overview-db:
+    container_name: attraction-overview-db
+    image: mongo
+    build:
+      context: ./database
+      dockerfile: Dockerfile
+    ports:
+      - 27017:27017
+    networks:
+      - attraction
+    restart: always
